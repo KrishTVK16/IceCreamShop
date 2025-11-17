@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rockz & Rollz - Chilling World</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Rockz & Rollz</h1>
+        <p class="tagline">Chilling World ❄️🍨</p>
+        <nav>
+            <button class="nav-btn" data-target="home">Home</button>
+            <button class="nav-btn" data-target="about">About</button>
+            <button class="nav-btn" data-target="services">Services</button>
+            <button class="nav-btn" data-target="contact">Contact</button>
+        </nav>
+    </header>
+
+    <section id="home" class="active">
+        <h1>Welcome to Rockz & Rollz 😋</h1>
+        <p>Experience the freshest, purest and coolest ice-creams made live in front of you! From creamy rolls to soft
+            snow-flakes, every scoop is crafted with love and real ingredients — no preservatives, no secrets! 💖</p>
+    </section>
+
+    <section id="about" class="box">
+        <h2>About Us</h2>
+        <p>At Rockz & Rollz, our motto is <b>"Serve Fresh, Serve Happy!"</b>
+            We believe in transparency, purity and creativity — all our products are made right in front of customers
+            using real fruits, premium bases and hygienic processes. Your smile is our biggest achievement! 😊</p>
+    </section>
+
+    <section id="services" class="box">
+
+        <h3>Gallery 📸</h3>
+        <div class="gallery">
+            <img src="assets/images/img1.jpg" alt="Vanilla Ice Cream Roll">
+            <img src="assets/images/img2.jpg" alt="Choclate Ice Cream Roll">
+            <img src="assets/images/img3.jpg" alt="Strawberry Ice Cream Roll">
+            <img src="assets/images/img4.jpg" alt="Oreo Ice Cream Roll">
+            <img src="assets/images/img5.jpg" alt="Coconut Ice Cream Roll">
+            <img src="assets/images/img14.jpg" alt="Lemon Mint">
+            <img src="assets/images/img15.jpg" alt="Choclate Shake">
+            <img src="assets/images/img16.jpg" alt="Watermelon Soda">
+        </div>
+        <h2>Our Menu 🍧🍹</h2>
+        <button id="loadMenu">Load Menu</button>
+        <div id="menuList" class="menu-grid">
+        </div>
+        <div id="loader" class="loader" style="display:none;"></div>
+    </section>
+
+    <section id="contact" class="box">
+        <h2>Contact Us 📩</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required><br>
+            <input type="email" name="email" placeholder="Email Address" required><br>
+            <input type="tel" id="phone" maxlength="10" inputmode="numeric" placeholder="Phone Number" required>
+            <p id="phone-error" style="color:red; font-size:14px;"></p>
+            <textarea name="message" placeholder="Your Order / Inquiry..." required></textarea><br>
+            <button type="submit" id="sendBtn">Send</button>
+        </form>
+        <p id="msg"></p>
+        <p id="form-status"></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Rockz & Rollz | Made with Love 🍦</p>
+    </footer>
+
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h3>Order Submitted 🎉</h3>
+            <p>Thank you for contacting us. We’ll get back soon!</p>
+            <button id="closePopup">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+[
+    {"item":"Classic Vanilla Roll","price":"₹60"},
+    {"item":"Chocolate Roll","price":"₹70"},
+    {"item":"Strawberry Roll","price":"₹80"},
+    {"item":"Mango Roll","price":"₹80"},
+    {"item":"Blueberry Roll","price":"₹90"},
+    {"item":"Oreo Cream Roll","price":"₹100"},
+    {"item":"Dry Fruit Roll","price":"₹100"},
+    {"item":"Coffee Caramel Roll","price":"₹80"},
+    {"item":"Nutty Choco Roll","price":"₹100"},
+    {"item":"Kiwi Frost Roll","price":"₹90"},
+    
+    {"item":"Lemon Mint Juice","price":"₹50"},
+    {"item":"Orange Splash","price":"₹60"},
+    {"item":"Watermelon Soda","price":"₹60"},
+    {"item":"Pineapple Juice","price":"₹70"},
+    {"item":"Strawberry Cooler","price":"₹80"},
+    {"item":"Mango Shake","price":"₹90"},
+    {"item":"Kiwi Refresher","price":"₹90"},
+    {"item":"Blue Lagoon Drink","price":"₹100"},
+    {"item":"Royal Badam Milk","price":"₹100"},
+    {"item":"Chocolate Milk Shake","price":"₹100"}
+]
