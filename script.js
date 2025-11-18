@@ -81,7 +81,7 @@ $(document).ready(function () {
         document.getElementById("contactForm").reset();
 
     });
-    debugger;
+
     function validatePhone() {
         let phone = document.getElementById("phone").value.trim();
         let errorMsg = document.getElementById("phone-error");

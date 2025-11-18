@@ -55,7 +55,7 @@
         <div id="loader" class="loader" style="display:none;"></div>
     </section>
 
-    <section id="contact" class="box">
+    <!-- <section id="contact" class="box">
         <h2>Contact Us 📩</h2>
         <form id="contactForm">
             <input type="text" name="name" placeholder="Your Name" required><br>
@@ -67,6 +67,30 @@
         </form>
         <p id="msg"></p>
         <p id="form-status"></p>
+    </section> -->
+
+    <section id="contact" class="box">
+        <div class="contact-container">
+            <div class="contact-left">
+                <h2>Contact Us 📩</h2>
+                <form id="contactForm">
+                    <input type="text" name="name" placeholder="Your Name" required><br>
+                    <input type="email" name="email" placeholder="Email Address" required><br>
+                    <input type="tel" id="phone" maxlength="10" inputmode="numeric" placeholder="Phone Number" required>
+                    <p id="phone-error" style="color:red; font-size:14px;"></p>
+                    <textarea name="message" placeholder="Your Order / Inquiry..." required></textarea><br>
+                    <button type="submit" id="sendBtn">Send</button>
+                </form>
+                <p id="msg"></p>
+                <p id="form-status"></p>
+            </div>
+
+            <div class="contact-right transparent-bg">
+                <img src="assets/images/imglogo.jpg" alt="Rockz & Rollz Logo">
+                <p class="info"><span class="icon">📞 💬</span> 905219512</p>
+                <p class="info"><span class="icon">📧</span> onlyvamsi08@gmail.com</p>
+            </div>
+        </div>
     </section>
 
     <footer>

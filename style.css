@@ -1,9 +1,39 @@
+/* ------------------ GLOBAL STYLES ------------------ */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: #FFF8E7;
+    position: relative;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle, rgba(255, 182, 193, 0.5) 10%, transparent 20%) 0 0,
+        radial-gradient(circle, rgba(127, 219, 255, 0.5) 10%, transparent 20%) 50px 50px,
+        radial-gradient(circle, rgba(255, 182, 193, 0.5) 10%, transparent 20%) 100px 0;
+    background-size: 200px 200px;
+    animation: floatBg 12s linear infinite;
+    z-index: -1;
+}
+
+@keyframes floatBg {
+    from {
+        background-position: 0 0, 50px 50px, 100px 0;
+    }
+
+    to {
+        background-position: 0 -600px, 50px -550px, 100px -600px;
+    }
+}
+
+
+/* ------------------ HEADER & NAV ------------------ */
 header {
     text-align: center;
     background: linear-gradient(135deg, #FFB6C1, #7FDBFF);
@@ -23,14 +53,8 @@ nav a {
     font-weight: 600;
 }
 
-.box {
-    background: white;
-    margin: 20px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
-}
 
+/* ------------------ BUTTONS ------------------ */
 button {
     padding: 10px 15px;
     background: #FF8FAB;
@@ -44,6 +68,8 @@ button:hover {
     background: #ff6b8a;
 }
 
+
+/* ------------------ MENU / GALLERY ------------------ */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -58,93 +84,6 @@ button:hover {
     text-align: center;
     font-weight: 600;
     border: 1px solid #ffd2e7;
-}
-
-form input,
-form textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin: 8px 0;
-}
-
-footer {
-    text-align: center;
-    padding: 15px;
-    background: #FFB6C1;
-    color: white;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 182, 193, 0.5) 10%, transparent 20%) 0 0,
-        radial-gradient(circle, rgba(127, 219, 255, 0.5) 10%, transparent 20%) 50px 50px,
-        radial-gradient(circle, rgba(255, 182, 193, 0.5) 10%, transparent 20%) 100px 0;
-    background-size: 200px 200px;
-    animation: floatBg 12s linear infinite;
-    z-index: -1;
-}
-
-@keyframes floatBg {
-    from {
-        background-position: 0 0, 50px 50px, 100px 0;
-    }
-
-    to {
-        background-position: 0 -600px, 50px -550px, 100px -600px;
-    }
-}
-
-.loader {
-    border: 5px solid #ffe3ef;
-    border-top: 5px solid #ff6b8a;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin: 10px auto;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-    animation: pop 0.4s ease;
-}
-
-@keyframes pop {
-    0% {
-        transform: scale(0.5);
-    }
-
-    100% {
-        transform: scale(1);
-    }
 }
 
 .gallery {
@@ -167,15 +106,195 @@ body::before {
     transform: scale(1.1);
 }
 
+
+/* ------------------ SECTIONS ------------------ */
 section {
     display: none;
 }
 
-section.active {
+section.active,
+.box.active {
     display: block;
     background: white;
     margin: 20px;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+#services {
+    background: url("assets/images/imgbg1.jpg") center/cover no-repeat;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#contact {
+    background: url("assets/images/imgbg.jpg") center/cover no-repeat;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+
+/* ------------------ CONTACT FORM ------------------ */
+form input,
+form textarea {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 8px 0;
+    padding: 15px;
+}
+
+form input {
+    width: 30%;
+}
+
+form textarea {
+    width: 80%;
+    min-height: 50px;
+}
+
+
+/* ------------------ FLEX LAYOUT ------------------ */
+.contact-container {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-left {
+    flex: 0 0 70%;
+}
+
+.contact-right {
+    flex: 0 0 30%;
+    width: 100%;
+    text-align: center;
+}
+
+.contact-right img {
+    width: 100%;
+    max-width: 90%;
+    border-radius: 10px;
+    object-fit: contain;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ------------------ DIRECT CONTACT BOX ------------------ */
+.direct-contact {
+    margin-top: 12px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.direct-contact h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.direct-contact a {
+    font-weight: 600;
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.direct-contact a:hover {
+    text-decoration: underline;
+}
+
+.contact-right.transparent-bg {
+    background: transparent !important;
+    text-align: center;
+    padding: 20px;
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-right .info {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.contact-right .icon {
+    margin-right: 8px;
+    font-size: 25px;
+}
+
+
+/* ------------------ LOADER & POPUP ------------------ */
+.loader {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px auto;
+    border: 5px solid #ffe3ef;
+    border-top: 5px solid #ff6b8a;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.5);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-left,
+    .contact-right {
+        width: 100%;
+    }
+
+    .contact-right img {
+        width: 70%;
+        margin-top: 15px;
+    }
+}
+
+
+/* ------------------ FOOTER ------------------ */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #FFB6C1;
+    color: white;
 }
