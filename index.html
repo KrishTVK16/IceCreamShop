@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rockz & Rollz - Chilling World</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -16,30 +18,96 @@
             <h1>Rockz & Rollz</h1>
             <p class="tagline">Chilling World ❄️🍨</p>
         </div>
-        <nav>
+        <nav id="mainNav">
             <button class="nav-btn" data-target="home">Home</button>
             <button class="nav-btn" data-target="about">About</button>
             <button class="nav-btn" data-target="services">Services</button>
             <button class="nav-btn" data-target="contact">Contact</button>
+            <button class="nav-btn" data-target="login" id="loginNavBtn">Login</button>
+            <!-- Logged in navigation (hidden by default) -->
+            <button class="nav-btn" data-target="menu" id="menuNavBtn" style="display:none;">Menu</button>
+            <button class="nav-btn" data-target="cart" id="cartNavBtn" style="display:none;">Cart <span id="cartCount" class="cart-badge">0</span></button>
+            <button class="nav-btn" data-target="orders" id="ordersNavBtn" style="display:none;">Orders</button>
+            <button class="nav-btn" data-target="profile" id="profileNavBtn" style="display:none;">Profile</button>
+            <button class="nav-btn" data-target="admin" id="adminNavBtn" style="display:none;">Admin</button>
+            <button class="nav-btn" id="logoutBtn" style="display:none;">Logout</button>
         </nav>
     </header>
 
-    <section id="home" class="active">
-        <h1>Welcome to Rockz & Rollz 😋</h1>
-        <p>Experience the freshest, purest and coolest ice-creams made live in front of you! From creamy rolls to soft
-            snow-flakes, every scoop is crafted with love and real ingredients — no preservatives, no secrets! 💖</p>
+    <!-- HOME (HERO) SECTION -->
+    <section id="home" class="box active">
+        <div class="home-hero">
+            <div class="home-text">
+                <h1>Welcome to Rockz & Rollz 😋</h1>
+                <p class="home-subtitle">
+                    Freshly rolled ice creams & chilled delights made live in front of you.
+                    Pure ingredients, zero preservatives, maximum happiness. 💖
+                </p>
+                <div class="home-highlights">
+                    <div class="highlight-chip">🎯 Live Ice Cream Rolls</div>
+                    <div class="highlight-chip">🍓 Real Fruits Only</div>
+                    <div class="highlight-chip">❄️ Ultra-cold Hygenic Setup</div>
+                </div>
+                <div class="home-cta">
+                    <button class="btn primary" id="viewMenuBtn">View Menu</button>
+                    <button class="btn ghost" onclick="showSection('about')">Why Rockz & Rollz?</button>
+                </div>
+            </div>
+            <div class="home-visual">
+                <div class="hero-card">
+                    <img src="assets/images/img4.jpg" alt="Signature Ice Cream Roll">
+                    <div class="hero-card-text">
+                        <h3>Signature Oreo Roll</h3>
+                        <p>Our crowd-favourite crunchy & creamy delight.</p>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-pill">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Flavours</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- ABOUT SECTION -->
     <section id="about" class="box">
-        <h2>About Us</h2>
-        <p>At Rockz & Rollz, our motto is <b>"Serve Fresh, Serve Happy!"</b>
-            We believe in transparency, purity and creativity — all our products are made right in front of customers
-            using real fruits, premium bases and hygienic processes. Your smile is our biggest achievement! 😊</p>
+        <div class="about-header">
+            <h2>About Us</h2>
+            <p class="about-intro">
+                At <b>Rockz & Rollz</b>, our motto is <b>"Serve Fresh, Serve Happy!"</b>.
+                Every roll, shake and soda is crafted in front of you with premium ingredients.
+            </p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>🍦 Pure Ingredients</h3>
+                <p>No premix shortcuts. We use fresh milk, real fruits and quality toppings for every order.</p>
+            </div>
+            <div class="about-card">
+                <h3>👀 Full Transparency</h3>
+                <p>Open live counter where you see your ice cream rolled, mixed and plated in real-time.</p>
+            </div>
+            <div class="about-card">
+                <h3>✨ Hygienic Experience</h3>
+                <p>Clean workspace, food-grade tools and a chilled environment to keep everything safe & fresh.</p>
+            </div>
+            <div class="about-card">
+                <h3>🎉 Family Friendly</h3>
+                <p>Perfect place to chill with friends & family, celebrate moments and click insta-worthy pictures.</p>
+            </div>
+        </div>
     </section>
 
     <section id="services" class="box">
 
         <h3>Gallery 📸</h3>
+        <p class="section-subtitle">A quick peek into our live-rolled ice creams and chilled drinks.</p>
         <div class="gallery">
             <img src="assets/images/img1.jpg" alt="Vanilla Ice Cream Roll">
             <img src="assets/images/img2.jpg" alt="Choclate Ice Cream Roll">
@@ -52,8 +120,7 @@
         </div>
         <h2>Our Menu 🍧🍹</h2>
         <button id="loadMenu">Load Menu</button>
-        <div id="menuList" class="menu-grid">
-        </div>
+        <div id="menuList" class="menu-grid"></div>
         <div id="loader" class="loader" style="display:none;"></div>
     </section>
 
@@ -70,6 +137,240 @@
         <p id="msg"></p>
         <p id="form-status"></p>
     </section> -->
+    <!-- ---------- LOGIN SECTION (inside index.html) ---------- -->
+    <section id="login" class="box">
+        <div class="auth-card">
+            <h2>Login</h2>
+            <form id="loginForm" class="auth-form" autocomplete="off">
+                <label>Email</label>
+                <input type="email" id="loginEmail" placeholder="you@example.com" required>
+                <label>Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter password" required>
+                <div class="admin-login-toggle">
+                    <input type="checkbox" id="isAdminLogin">
+                    <label for="isAdminLogin">Login as Admin</label>
+                </div>
+                <p id="loginMsg" class="form-msg"></p>
+
+                <button type="submit" class="btn primary">Login</button>
+                <div class="aux">
+                    <a href="#register" class="link-switch" data-target="register">Create account</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ---------- REGISTER SECTION (inside index.html) ---------- -->
+    <section id="register" class="box">
+        <div class="auth-card">
+            <h2>Create Account</h2>
+            <form id="regForm" class="auth-form" autocomplete="off">
+                <label>Email</label>
+                <input type="email" id="regEmail" placeholder="you@example.com" required>
+
+                <label>Password</label>
+                <input type="password" id="regPassword" placeholder="Min 8 chars, 1 uppercase, 1 number" required>
+
+                <label>Confirm Password</label>
+                <input type="password" id="regConfirm" placeholder="Repeat password" required>
+
+                <p id="regMsg" class="form-msg"></p>
+
+                <button type="submit" class="btn primary">Register</button>
+                <div class="aux">
+                    <a href="#login" class="link-switch" data-target="login">Already have account? Login</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Loader overlay used by both forms -->
+    <div id="auth-loader" class="loader-overlay" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Add SweetAlert2 CDN near end of body (before script.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- MENU/ITEMS SELECTION SECTION (Logged in users) -->
+    <section id="menu" class="box" style="display:none;">
+        <h2>Select Your Items 🍧🍹</h2>
+        <div id="menuItemsContainer" class="menu-items-container">
+            <!-- Menu items will be loaded here -->
+        </div>
+    </section>
+
+    <!-- CART SECTION -->
+    <section id="cart" class="box" style="display:none;">
+        <h2>Your Cart 🛒</h2>
+        <div id="cartContainer" class="cart-container">
+            <div id="cartItems" class="cart-items">
+                <p class="empty-cart">Your cart is empty</p>
+            </div>
+            <div class="cart-summary" id="cartSummary" style="display:none;">
+                <div class="cart-total">
+                    <h3>Total: ₹<span id="cartTotal">0</span></h3>
+                    <button id="checkoutBtn" class="btn primary">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ORDERS SECTION -->
+    <section id="orders" class="box" style="display:none;">
+        <h2>Your Orders 📋</h2>
+        <div id="ordersContainer" class="orders-container">
+            <p class="empty-orders">No orders yet. Start ordering from the Menu!</p>
+        </div>
+    </section>
+
+    <!-- PROFILE SECTION -->
+    <section id="profile" class="box" style="display:none;">
+        <h2>Your Profile 👤</h2>
+        <div class="profile-container">
+            <div class="profile-info">
+                <p><strong>Email:</strong> <span id="userEmail">-</span></p>
+                <p><strong>Member Since:</strong> <span id="memberSince">-</span></p>
+            </div>
+            <!-- Normal user stats -->
+            <div class="profile-stats user-stats">
+                <div class="stat-card">
+                    <h3 id="totalOrders">0</h3>
+                    <p>Total Orders</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalSpent">₹0</h3>
+                    <p>Total Spent</p>
+                </div>
+            </div>
+            <!-- Admin overview stats -->
+            <div class="profile-stats admin-stats" style="display:none;">
+                <div class="stat-card">
+                    <h3 id="profileAdminTotalOrders">0</h3>
+                    <p>Total Orders Received</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="profileAdminTotalRevenue">₹0</h3>
+                    <p>Total Amount Received (All Time)</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="profileAdminRevenueToday">₹0</h3>
+                    <p>Amount Received Today</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="profileAdminRevenueMonth">₹0</h3>
+                    <p>Amount Received This Month</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="profileAdminPendingOrders">0</h3>
+                    <p>Pending Orders</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="profileAdminAcceptedOrders">0</h3>
+                    <p>Accepted Orders</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="profileAdminCompletedOrders">0</h3>
+                    <p>Completed Orders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD SECTION -->
+    <section id="admin" class="box" style="display:none;">
+        <h2>Admin Dashboard 🛠️</h2>
+        <p class="section-subtitle">View users, orders and contact messages.</p>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-admin-tab="summary">Summary</button>
+            <button class="admin-tab" data-admin-tab="users">Users</button>
+            <button class="admin-tab" data-admin-tab="orders">Orders</button>
+            <button class="admin-tab" data-admin-tab="contacts">Contacts</button>
+        </div>
+
+        <div class="admin-content">
+            <div id="admin-summary" class="admin-panel active">
+                <div class="admin-summary-grid">
+                    <div class="admin-summary-card">
+                        <h3 id="adminTotalUsers">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                    <div class="admin-summary-card">
+                        <h3 id="adminTotalOrders">0</h3>
+                        <p>Total Orders</p>
+                    </div>
+                    <div class="admin-summary-card">
+                        <h3 id="adminTotalRevenue">₹0</h3>
+                        <p>Total Revenue</p>
+                    </div>
+                    <div class="admin-summary-card">
+                        <h3 id="adminTotalContacts">0</h3>
+                        <p>Contact Messages</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="admin-users" class="admin-panel">
+                <h3>User</h3>
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Role</th>
+                                <th>Email</th>
+                                <th>Joined</th>
+                                <th>Orders</th>
+                                <th>Total Spent</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminUsersBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="admin-orders" class="admin-panel">
+                <h3>Orders</h3>
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>User</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminOrdersBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="admin-contacts" class="admin-panel">
+                <h3>Contact Messages</h3>
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminContactsBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="contact" class="box">
         <div class="contact-container">
